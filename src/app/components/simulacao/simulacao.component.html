@@ -33,16 +33,16 @@
       <div class="text-center">
         <div class="btn-group-toggle" data-toggle="buttons">
           <label class="btn">
-            <input type="radio" name="planId" formControlName="planId" id="faleMais30" value="1"> faleMais30
+            <input type="radio" name="planId" formControlName="planId" id="faleMais30" value="1" (change)="planSelected($event)"> faleMais30
           </label>
           <label class="btn">
-            <input type="radio" name="planId" formControlName="planId" id="faleMais60" value="2"> faleMais60
+            <input type="radio" name="planId" formControlName="planId" id="faleMais60" value="2" (change)="planSelected($event)"> faleMais60
           </label>
           <label class="btn">
-            <input type="radio" name="planId" formControlName="planId" id="faleMais90" value="3"> faleMais90
+            <input type="radio" name="planId" formControlName="planId" id="faleMais90" value="3" (change)="planSelected($event)"> faleMais90
           </label>
           <label class="btn">
-            <input type="radio" name="planId" formControlName="planId" id="faleMais120" value="4"> faleMais120
+            <input type="radio" name="planId" formControlName="planId" id="faleMais120" value="4" (change)="planSelected($event)"> faleMais120
           </label>
         </div>
       </div>
