@@ -13,5 +13,6 @@ O protótipo final e as propostas podem ser encontradas [aqui](https://www.figma
 
 ## 2. Desenvolvimento
 
-Foi escolhido o Angular pelo fato de que o Angular Forms possui validações by default, diferentes de outras tecnologias similares como React e VUE.
+Foi escolhido o Angular pelo fato de possuir os Reactive Forms, que são robutos, reusáveis e testáveis, diferentes de outras tecnologias similares como React e VUE. E como os inputs são a parte principal da aplicação, esta foi considerada a tecnologia que mais se adapta ao problema.
+
 
