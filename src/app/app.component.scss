@@ -1,8 +1,5 @@
-$PRIMARY-COLOR: #7F465B;
-$SECONDARY-COLOR: #EBEBEB;
-
 #main {
-    background-color: $PRIMARY-COLOR;
+    background-color: var(--PRIMARY-COLOR);
     height: 100%;
 
     #header {
