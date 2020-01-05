@@ -1,0 +1,35 @@
+$PRIMARY-COLOR: #7F465B;
+$SECONDARY-COLOR: #EBEBEB;
+
+#main {
+    background-color: $PRIMARY-COLOR;
+    color: white;
+
+    #header {
+        &:after {
+            content: "";
+            height: 1px;
+            width: 97%;
+            display: block;
+            background: white;
+            margin: .5rem auto 1rem;
+        }
+        
+        #informacoes {
+            text-align: right;
+            border-right: 1px solid #fff;
+            font-size: small;
+            line-height: 15px;
+            display: inline-block;
+        }
+
+        #contato {
+            font-size: x-large;
+            font-weight: 700;
+            vertical-align: top;
+        }
+    }
+}
+
+
+
