@@ -19,7 +19,7 @@ ng s
 
 ## Testes
 
-Execute o comando ```ng test```
+Execute o comando ```npm test```
 
 
 
