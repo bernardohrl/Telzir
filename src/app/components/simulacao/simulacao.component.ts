@@ -24,7 +24,7 @@ export class SimulacaoComponent implements OnInit {
   public simuladorForm = this.fb.group({
     selectedCallId: [0],
     selectedDestinyId: [0],
-    time: [15, [Validators.max(500), Validators.min(1), Validators.required]],
+    time: [15, [Validators.max(600), Validators.min(1), Validators.required]],
     plan: [null, Validators.required],
   });
 

@@ -1,69 +1,79 @@
-<div class="card text-center p-3 px-md-5">
+<div class="card text-center p-3 px-sm-5">
     <div id="titulo"> Simulador de Ligação </div>
 
 
     <!-- INPUTS -->
     <form class="text-left" [formGroup]="simuladorForm">
       <div class="row">
-        <div class="col">
-          <label for="selectedCall">Origem</label>
-          <select class="form-control" formControlName="selectedCallId" (change)="callSelected()">
-            <option *ngFor="let call of callOptions, let i = index" value="{{i}}">
-              {{call.origin.ddd}}
-            </option>
-          </select>
+        <div class="col-sm-6">
+          <div class="row">
+            <div class="col-6">
+              <label for="selectedCall">Origem</label>
+              <select class="form-control" formControlName="selectedCallId" (change)="callSelected()">
+                <option *ngFor="let call of callOptions, let i = index" value="{{i}}">
+                  {{call.origin.ddd}}
+                </option>
+              </select>
+            </div>
+            <div class="col-6">
+              <label for="selectedDestiny">Destino</label>
+              <select class="form-control" formControlName="selectedDestinyId">
+                <option *ngFor="let destination of selectedCall.destinations, let i = index" value="{{i}}">
+                  {{destination.location.ddd}}
+                </option>
+              </select>
+            </div>
+          </div>
         </div>
-        <div class="col">
-          <label for="selectedDestiny">Destino</label>
-          <select class="form-control" formControlName="selectedDestinyId">
-            <option *ngFor="let destination of selectedCall.destinations, let i = index" value="{{i}}">
-              {{destination.location.ddd}}
-            </option>
-          </select>
-        </div>
-        <div class="col">
+        <div class="col-sm-4 offset-sm-2">
           <label for="time">Tempo</label>
           <input type="number" class="form-control" formControlName="time" min="1" max="200" (input)="updatePrice()">
         </div>
       </div>
+      <!-- <div class="{{simuladorForm.get('time').valid ? 'invisible' : 'visible'}}" id="time-error">
+        Por favor, insira um tempo entre 1 e 600.
+      </div>  -->
 
+      <div class="{{simuladorForm.get('time').valid ? 'invisible' : 'visible'}} text-right text-danger" style="line-height: 12px;">
+        <small> Por favor, insira um tempo entre 1 e 600. </small>
+      </div> 
 
-      <!-- SELECTOR -->
       <label for="plan">Plano</label>
-      <div class="text-center">
-        <div class="btn-group-toggle" data-toggle="buttons">
-          <label class="btn" *ngFor="let plan of plans">
-          <input type="radio" name="plan" formControlName="plan" id="{{plan.name}}" value="{{plan.time}}" (change)="planSelected($event)"> {{plan.name}}
+      <div class="btn-group-toggle" data-toggle="buttons">
+        <div class="row">
+          <label class="btn col-sm" *ngFor="let plan of plans">
+            <input type="radio" name="plan" formControlName="plan" id="{{plan.name}}" value="{{plan.time}}" (change)="planSelected($event)"> {{plan.name}}
           </label>
         </div>
       </div>
     </form>
-
+    
 
     <!-- RESULT -->
-    <div *ngIf="showPrices; else elseBlock">
-        <div class="row mt-5 mb-5 mx-2">
-          <div id="with-falemais" class="col-sm py-5">
-              <img src="assets/logo-falemais.png" alt="Logo Telezir">
-              <div>
-                <span class="coin">R$</span> 
-                <span class="integer">{{getInteger(faleMaisPrice)}}</span> 
-                <span class="cents">,{{getDecimal(faleMaisPrice)}}</span>
-              </div>
-          </div>
-          <div id="without-falemais" class="col-sm py-5">
-            Sem FaleMais
+    <div id="prices" *ngIf="showPrices; else elseBlock">
+      <div class="row mt-5 mb-5 mx-2">
+        <div id="falemais" class="col-sm py-5">
+            <img src="assets/logo-falemais.png" alt="Logo Telezir">
             <div>
               <span class="coin">R$</span> 
-              <span class="integer">{{getInteger(normalPrice)}}</span> 
-              <span class="cents">,{{getDecimal(normalPrice)}}</span>
+              <span class="integer">{{getInteger(faleMaisPrice)}}</span> 
+              <span class="cents">,{{getDecimal(faleMaisPrice)}}</span>
             </div>
+        </div>
+        <div id="normal" class="col-sm py-5">
+          Sem FaleMais
+          <div>
+            <span class="coin">R$</span> 
+            <span class="integer">{{getInteger(normalPrice)}}</span> 
+            <span class="cents">,{{getDecimal(normalPrice)}}</span>
           </div>
         </div>
+      </div>
     </div>
 
+    <!-- Placeholder Image -->
     <ng-template #elseBlock>
-      <img id='image' src="assets/image.png" alt="Logo Telezir">
+      <img id='image' class="my-5" src="assets/image.png" alt="Logo Telezir">
     </ng-template>
     
 </div>
