@@ -23,7 +23,7 @@
         </div>
         <div class="col">
           <label for="time">Tempo</label>
-          <input type="number" class="form-control" formControlName="time" min="1" max="200" (keypress)="checkValid()">
+          <input type="number" class="form-control" formControlName="time" min="1" max="200" (input)="updatePrice()">
         </div>
       </div>
 
@@ -32,17 +32,8 @@
       <label for="plan">Plano</label>
       <div class="text-center">
         <div class="btn-group-toggle" data-toggle="buttons">
-          <label class="btn">
-            <input type="radio" name="planId" formControlName="planId" id="faleMais30" value="1" (change)="planSelected($event)"> faleMais30
-          </label>
-          <label class="btn">
-            <input type="radio" name="planId" formControlName="planId" id="faleMais60" value="2" (change)="planSelected($event)"> faleMais60
-          </label>
-          <label class="btn">
-            <input type="radio" name="planId" formControlName="planId" id="faleMais90" value="3" (change)="planSelected($event)"> faleMais90
-          </label>
-          <label class="btn">
-            <input type="radio" name="planId" formControlName="planId" id="faleMais120" value="4" (change)="planSelected($event)"> faleMais120
+          <label class="btn" *ngFor="let plan of plans">
+          <input type="radio" name="plan" formControlName="plan" id="{{plan.name}}" value="{{plan.time}}" (change)="planSelected($event)"> {{plan.name}}
           </label>
         </div>
       </div>
@@ -50,22 +41,22 @@
 
 
     <!-- RESULT -->
-    <div *ngIf="showPlan; else elseBlock">
+    <div *ngIf="showPrices; else elseBlock">
         <div class="row mt-5 mb-5 mx-2">
           <div id="with-falemais" class="col-sm py-5">
               <img src="assets/logo-falemais.png" alt="Logo Telezir">
               <div>
                 <span class="coin">R$</span> 
-                <span class="integer">00</span> 
-                <span class="cents">,00</span>
+                <span class="integer">{{getInteger(faleMaisPrice)}}</span> 
+                <span class="cents">,{{getDecimal(faleMaisPrice)}}</span>
               </div>
           </div>
           <div id="without-falemais" class="col-sm py-5">
             Sem FaleMais
             <div>
               <span class="coin">R$</span> 
-              <span class="integer">0</span> 
-              <span class="cents">,00</span>
+              <span class="integer">{{getInteger(normalPrice)}}</span> 
+              <span class="cents">,{{getDecimal(normalPrice)}}</span>
             </div>
           </div>
         </div>
