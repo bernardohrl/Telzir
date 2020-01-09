@@ -38,7 +38,10 @@ export class SimulacaoComponent implements OnInit {
   }
 
 
-  callSelected() { this.selectedCall = this.callOptions[this.simuladorForm.get('selectedCallId').value] }
+  callSelected() { 
+    this.selectedCall = this.callOptions[this.simuladorForm.get('selectedCallId').value]
+    this.updatePrice();
+  }
 
 
   planSelected(event) {
@@ -66,17 +69,25 @@ export class SimulacaoComponent implements OnInit {
     var usedTime = this.simuladorForm.get('time').value;
     var availableMinutes: number = parseInt(this.simuladorForm.get('plan').value);
     var price: number =  this.selectedCall.destinations[this.simuladorForm.get('selectedDestinyId').value].price;
+    
 
     this.faleMaisPrice = Math.max(0, (usedTime - availableMinutes)) * price;
-    console.log(usedTime)
-    console.log(usedTime*price, availableMinutes*price)
     this.normalPrice = usedTime * price;
+
+
+
+    console.log('\n\n\n')
+    console.log('Tempo usado:', usedTime);
+    console.log('Preço:', price);
+    console.log('Total sem plano:', this.normalPrice);
+    console.log('\n')
+    console.log('Total com plano ' + this.simuladorForm.get('plan').value + ':', this.faleMaisPrice);
   }
 
   
   getInteger(numb): string { 
     var intString: string = (numb + "").split(".")[0]                           // Gets int part
-    return intString.length < 2 ? intString + '0' : intString;                  // Turns 'x' to '0x' 
+    return intString.length < 2 ? '0' + intString : intString;                  // Turns 'x' to '0x' 
   }
   getDecimal(numb): string {
     var formatedDecimal: string = (Math.round(numb * 100) / 100).toFixed(2);   // Formats 'xx.x' to 'xx.x0'

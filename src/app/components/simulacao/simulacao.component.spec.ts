@@ -1,6 +1,7 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { SimulacaoComponent } from './simulacao.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 describe('SimulacaoComponent', () => {
   let component: SimulacaoComponent;
@@ -8,7 +9,10 @@ describe('SimulacaoComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ SimulacaoComponent ]
+      imports: [ReactiveFormsModule],
+      declarations: [ 
+        SimulacaoComponent
+      ]
     })
     .compileComponents();
   }));
@@ -19,7 +23,12 @@ describe('SimulacaoComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should create', () => {
-    expect(component).toBeTruthy();
+  test('TESTE DE SOMA', () => {
+    expect(3+1).toBe(4);
   });
+
+  // test("it creates my component", () => {
+  //   expect(component).toBeTruthy();
+  // });
+
 });

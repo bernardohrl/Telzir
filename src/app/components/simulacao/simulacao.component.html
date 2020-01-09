@@ -17,7 +17,7 @@
             </div>
             <div class="col-6">
               <label for="selectedDestiny">Destino</label>
-              <select class="form-control" formControlName="selectedDestinyId">
+              <select class="form-control" formControlName="selectedDestinyId" (change)="updatePrice()">
                 <option *ngFor="let destination of selectedCall.destinations, let i = index" value="{{i}}">
                   {{destination.location.ddd}}
                 </option>
