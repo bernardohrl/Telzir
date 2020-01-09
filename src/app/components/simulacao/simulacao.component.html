@@ -1,6 +1,8 @@
 <div class="card text-center p-3 px-md-5">
-    <div id="titulo"> Simulador de optiongação </div>
+    <div id="titulo"> Simulador de Ligação </div>
 
+
+    <!-- INPUTS -->
     <form class="text-left" [formGroup]="simuladorForm">
       <div class="row">
         <div class="col">
@@ -25,6 +27,8 @@
         </div>
       </div>
 
+
+      <!-- SELECTOR -->
       <label for="plan">Plano</label>
       <div class="text-center">
         <div class="btn-group-toggle" data-toggle="buttons">
@@ -44,13 +48,31 @@
       </div>
     </form>
 
-    <div>
-      <div *ngIf="showPlan; else elseBlock">
-        Content to render when condition is true.
-      </div>
-      <ng-template #elseBlock>
-        <img id='image' src="assets/image.png" alt="Logo Telezir">
-      </ng-template>
+
+    <!-- RESULT -->
+    <div *ngIf="showPlan; else elseBlock">
+        <div class="row mt-5 mb-5 mx-2">
+          <div id="with-falemais" class="col-sm py-5">
+              <img src="assets/logo-falemais.png" alt="Logo Telezir">
+              <div>
+                <span class="coin">R$</span> 
+                <span class="integer">00</span> 
+                <span class="cents">,00</span>
+              </div>
+          </div>
+          <div id="without-falemais" class="col-sm py-5">
+            Sem FaleMais
+            <div>
+              <span class="coin">R$</span> 
+              <span class="integer">0</span> 
+              <span class="cents">,00</span>
+            </div>
+          </div>
+        </div>
     </div>
+
+    <ng-template #elseBlock>
+      <img id='image' src="assets/image.png" alt="Logo Telezir">
+    </ng-template>
     
 </div>
