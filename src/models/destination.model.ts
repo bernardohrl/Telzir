@@ -1,6 +1,6 @@
 import { Location } from './location.model';
 
-export class Destination {
+export interface Destination {
     location: Location;
     price: number;
 }

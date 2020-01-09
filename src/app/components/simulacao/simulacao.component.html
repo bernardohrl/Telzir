@@ -1,31 +1,27 @@
 <div class="card text-center p-3 px-md-5">
-    <div id="titulo"> Simulador de Ligação </div>
+    <div id="titulo"> Simulador de optiongação </div>
 
     <form class="text-left" [formGroup]="simuladorForm">
       <div class="row">
         <div class="col">
-          <label for="ddd_origin">Origem</label>
-          <select class="form-control" formControlName="ddd_origin" (change)="update()">
-            <option>1</option>
-            <option>2</option>
-            <option>3</option>
-            <option>4</option>
-            <option>5</option>
+          <label for="selectedCall">Origem</label>
+          <select class="form-control" formControlName="selectedCallId" (change)="callSelected()">
+            <option *ngFor="let call of callOptions, let i = index" value="{{i}}">
+              {{call.origin.ddd}}
+            </option>
           </select>
         </div>
         <div class="col">
-          <label for="ddd_origin">Destino</label>
-          <select class="form-control" formControlName="ddd_destiny" (change)="update()">
-            <option>1</option>
-            <option>2</option>
-            <option>3</option>
-            <option>4</option>
-            <option>5</option>
+          <label for="selectedDestiny">Destino</label>
+          <select class="form-control" formControlName="selectedDestinyId">
+            <option *ngFor="let destination of selectedCall.destinations, let i = index" value="{{i}}">
+              {{destination.location.ddd}}
+            </option>
           </select>
         </div>
         <div class="col">
           <label for="time">Tempo</label>
-          <input type="text" class="form-control" formControlName="time" (keypress)="update()">
+          <input type="number" class="form-control" formControlName="time" min="1" max="200" (keypress)="checkValid()">
         </div>
       </div>
 
@@ -46,11 +42,15 @@
           </label>
         </div>
       </div>
-
     </form>
 
     <div>
+      <div *ngIf="showPlan; else elseBlock">
+        Content to render when condition is true.
+      </div>
+      <ng-template #elseBlock>
         <img id='image' src="assets/image.png" alt="Logo Telezir">
+      </ng-template>
     </div>
     
 </div>
