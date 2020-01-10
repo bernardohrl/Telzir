@@ -73,15 +73,6 @@ export class SimulacaoComponent implements OnInit {
 
     this.faleMaisPrice = Math.max(0, (usedTime - availableMinutes)) * price;
     this.normalPrice = usedTime * price;
-
-
-
-    console.log('\n\n\n')
-    console.log('Tempo usado:', usedTime);
-    console.log('Preço:', price);
-    console.log('Total sem plano:', this.normalPrice);
-    console.log('\n')
-    console.log('Total com plano ' + this.simuladorForm.get('plan').value + ':', this.faleMaisPrice);
   }
 
   

@@ -18,3 +18,7 @@ Foi escolhido o Angular pelo fato de possuir os Reactive Forms, que são robutos
 A apresentação das informações foi escolhida de forma que pode ser extensivel, então caso no futuro haja novas possibilidades de ligação, poderão ser adicionadas sem problema.
 
 O design deve ser resposível para qualquer tamanho de tela.
+
+
+## 3. Testes
+Foi escolhida a biblioteca JEST, pois, mesmo sendo simples, atende às necessidades da aplicação.
